@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2rev_print.c                                       :+:      :+:    :+:   */
+/*   rot13.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamako <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 16:50:46 by kamako            #+#    #+#             */
-/*   Updated: 2019/08/06 12:00:07 by kamako           ###   ########.fr       */
+/*   Created: 2019/07/30 17:01:07 by kamako            #+#    #+#             */
+/*   Updated: 2019/07/30 17:21:32 by kamako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@ void		ft_putchar(char c)
 	write(1, &c, 1);
 }
 
+int			rot_13(char c)
+{
+	if ((c >= 'A' && c <= 'M') || (c >= 'a' && c <= 'm'))
+		c += 13;
+	else if
+		((c >= 'N' && c <= 'Z') || (c >= 'n' && c <= 'z'))
+			c -= 13;
+		return (c);
+}
+
 int		main(int argc, char **argv)
 {
-	int	i;
-
 	if (argc == 2)
-	{
-		i = 0;
-		while (argv[1][i])
-			i++;
-		i--;
-		while (i >= 0)
-		{
-			ft_putchar(argv[1][i]);
-			i--;
-		}
-	}
-		ft_putchar('\n');
+		while (*argv[1])
+			ft_putchar(rot_13(*argv[1]++));
+	ft_putchar('\n');
 	return (0);
 }

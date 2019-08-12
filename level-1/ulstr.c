@@ -6,7 +6,7 @@
 /*   By: kamako <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:31:52 by kamako            #+#    #+#             */
-/*   Updated: 2019/07/29 17:20:43 by kamako           ###   ########.fr       */
+/*   Updated: 2019/07/31 14:57:14 by kamako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int argc, char **argv)
 		{
 			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
 				ft_putchar(argv[1][i] - 'A' + 'a');
-			if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
+			else if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
 				ft_putchar(argv[1][i] - 'a' + 'A');
 			else
 				ft_putchar(argv[1][i]);
