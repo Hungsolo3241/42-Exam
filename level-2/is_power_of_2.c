@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamako <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:44:25 by kamako            #+#    #+#             */
-/*   Updated: 2019/08/12 18:13:55 by kamako           ###   ########.fr       */
+/*   Created: 2019/08/13 12:05:28 by kamako            #+#    #+#             */
+/*   Updated: 2019/08/13 12:10:15 by kamako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void		ft_putchar(char c)
+int		is_power_of_2(unsigned int n)
 {
-	write(1, &c, 1);
-}
+	int	is_power_of_2 = 1;
 
-void		ft_destroy(char *str, char one, char two)
-{
-	while(*str)
-	{
-		if(*str == one)
-			ft_putchar(two);
-		else
-			ft_putchar(*str);
-		str++;
-	}
-}
-
-int		main(int argc, char **argv)
-{
-	if(argc == 4)
-	{
-		if(!argv[2][1] && !argv[3][1])
-		{
-				ft_destroy(argv[1], argv[2][0], argv[3][0]);
-		}
-	}
-	ft_putchar('\n');
-	return (0);
+	while (is_power_of_2 < n && is_power_of_2 < 2147483648)
+		is_power_of_2 *= 2;
+	return (n == is_power_of_2);
 }

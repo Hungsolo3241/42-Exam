@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamako <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:44:25 by kamako            #+#    #+#             */
-/*   Updated: 2019/08/12 18:13:55 by kamako           ###   ########.fr       */
+/*   Created: 2019/08/19 16:22:45 by kamako            #+#    #+#             */
+/*   Updated: 2019/08/19 17:14:48 by kamako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void		ft_putchar(char c)
+void	print_bits(unsigned char octet)
 {
-	write(1, &c, 1);
-}
+	int	integer;
+	int dividend;
 
-void		ft_destroy(char *str, char one, char two)
-{
-	while(*str)
+	dividendd = 128;
+	integer = octet;
+	while (dividend != 0)
 	{
-		if(*str == one)
-			ft_putchar(two);
-		else
-			ft_putchar(*str);
-		str++;
-	}
-}
-
-int		main(int argc, char **argv)
-{
-	if(argc == 4)
-	{
-		if(!argv[2][1] && !argv[3][1])
+		if (dividend <= integer)
 		{
-				ft_destroy(argv[1], argv[2][0], argv[3][0]);
+			write(1, "1", 1);
+			integer = integer % dividend;
 		}
+		else
+			write(1, "0", 1);
+		dividend = dividend / 2;
 	}
-	ft_putchar('\n');
-	return (0);
 }

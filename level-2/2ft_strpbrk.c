@@ -1,43 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   2ft_strpbrk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamako <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:44:25 by kamako            #+#    #+#             */
-/*   Updated: 2019/08/12 18:13:55 by kamako           ###   ########.fr       */
+/*   Created: 2019/08/20 15:51:36 by kamako            #+#    #+#             */
+/*   Updated: 2019/08/20 16:13:50 by kamako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 
-void		ft_putchar(char c)
+char		*ft_strpbrk(const char *s1, const char *s2)
 {
-	write(1, &c, 1);
-}
+	int	i;
+	int	j;
 
-void		ft_destroy(char *str, char one, char two)
-{
-	while(*str)
+	i = 0;
+	while (s1[i] != '\0')
 	{
-		if(*str == one)
-			ft_putchar(two);
-		else
-			ft_putchar(*str);
-		str++;
+		j = 0;
+		while(s2[j] != '\0')
+		{
+			if (s1[i] == s2[j])
+				return ((char *)&s1[i]);
+			j++;
+		}
+		i++;
 	}
+	return (NULL);
 }
 
 int		main(int argc, char **argv)
 {
-	if(argc == 4)
+	if (argc == 3)
 	{
-		if(!argv[2][1] && !argv[3][1])
+		char *pch;
+
+		pch = ft_strpbrk(argv[1], argv[2]);
+		printf("Characters in |%s|: ", argv[1]);
+		while (pch != NULL)
 		{
-				ft_destroy(argv[1], argv[2][0], argv[3][0]);
+			printf("%c ", *pch);
+			pch = ft_strpbrk(pch + 1, argv[2]);
 		}
+		printf("\n");
 	}
-	ft_putchar('\n');
 	return (0);
 }

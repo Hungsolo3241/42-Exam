@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamako <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 12:44:25 by kamako            #+#    #+#             */
-/*   Updated: 2019/08/12 18:13:55 by kamako           ###   ########.fr       */
+/*   Created: 2019/08/19 15:44:26 by kamako            #+#    #+#             */
+/*   Updated: 2019/08/20 15:51:19 by kamako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
 
-void		ft_putchar(char c)
+char		*ft_strchr(char *str, char c)
 {
-	write(1, &c, 1);
-}
-
-void		ft_destroy(char *str, char one, char two)
-{
-	while(*str)
+	while (*str)
 	{
-		if(*str == one)
-			ft_putchar(two);
-		else
-			ft_putchar(*str);
+		if (*str == c)
+			return (str);
 		str++;
 	}
+	return (0);
 }
 
-int		main(int argc, char **argv)
+char		*ft_strpbrk(const char *str1, const char *str2)
 {
-	if(argc == 4)
+	char *s1 = (char *)str1;
+	char *s2 = (char *)str2;
+
+	while(*s1)
 	{
-		if(!argv[2][1] && !argv[3][1])
-		{
-				ft_destroy(argv[1], argv[2][0], argv[3][0]);
-		}
+		if (ft_strchr(s2, *s1) != '\0')
+			return (s1);
+		s1++;
 	}
-	ft_putchar('\n');
-	return (0);
+	return(NULL);
 }
